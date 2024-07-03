@@ -71,11 +71,6 @@ The weight folder should contain the trained YOLO model file and the category la
 The project includes several example executables:
 
 - RGB-D: `rgbd_tum`
-- Monocular: `mono_tum`, `mono_kitti`, `mono_euroc`, `mono_tum_vi`, `mono_UMA`
-- Monocular-Inertial: `mono_inertial_euroc`, `mono_inertial_tum_vi`, `mono_inertial_UMA`
-- Stereo-Line-Inertial: `stereo_line_inertial_euroc`
-- Stereo-Line: `stereo_line_euroc`, `stereo_line_UMA`
-- Stereo-Kitti: `stereo_line_kitti`
 
  To run an example, use:
 
