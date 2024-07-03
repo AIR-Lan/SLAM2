@@ -2,7 +2,7 @@
 
 This project is an extended version of ORB-SLAM3, incorporating additional features and modifications.
 
-![1_intro](/home/h/Documents/1_intro.png)
+![1_intro](/home/h/VINS/SLAM2/1_intro.png)
 
 
 
@@ -83,7 +83,7 @@ The project includes several example executables:
 
 
 
-![simimap_all](/home/h/Documents/simimap_all.png)
+![simimap_all](/home/h/VINS/SLAM2/simimap_all.png)
 
 
 
