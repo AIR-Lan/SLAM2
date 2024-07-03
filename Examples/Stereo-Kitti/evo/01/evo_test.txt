@@ -1,0 +1,52 @@
+1. evo_traj 轨迹管理的主要工具
+
+evo_traj kitti CameraTrajectory.txt  --ref=00.txt -p -a -s --plot_mode xz
+
+2.APE/ATE计算绝对位姿误差
+(1).比较估计轨迹和参考轨迹并计算整个轨迹的统计数据，适用于测试轨迹的全局一致性
+-r 其中-r表示ape所基于的姿态关系 
+-s 仅对齐尺度
+-a表示采用SE(3) Umeyama对齐
+-v表示verbose mode,详细模式，
+-p 画图
+full 表示同时考虑旋转和平移误差得到的ape,无单位（unit-less）
+angle_deg 考虑旋转角得到的ape,单位°（deg）
+angle_rad 考虑旋转角得到的ape,单位弧度（rad）
+va 进行平移和旋转对齐,以详细模式显示
+evo_config show可以查看设置文件中的参数和参数的简要注释
+–plot_mode选择画图模式，二维图或者三维图，可选参数为[xy, xz, yx, yz, zx, zy, xyz]，默认为xyz
+ --save_plot ./VINSplot 保存图片到指定位置
+ --save_results ./VINS.zip 表示存储结果
+ 
+evo_ape kitti CameraTrajectory.txt 00.txt -r full -va --plot --plot_mode xyz
+
+
+
+evo_ape tum groundtruth.txt CameraTrajectory.txt -r angle_rad -va --plot --plot_mode xyz
+
+evo_ape kitti CameraTrajectory.txt 00.txt -p -va 
+
+measure 一区论文指标
+evo_ape kitti CameraTrajectory.txt 00.txt -p -va -s 
+（2）RPE 计算相对位姿误差
+相对位姿误差不进行绝对位姿的比较，相对位姿误差比较运动（姿态增量）。相对位姿误差可以给出局部精度，例如slam系统每米的平移或者旋转漂移量
+
+evo_rpe tum groundtruth.txt CameraTrajectory.txt  -va --plot --plot_mode xyz
+
+evo_rpe tum groundtruth.txt CameraTrajectory.txt -r full -va --plot --plot_mode xyz
+
+这个不太对轨迹（ 求每米考虑旋转角的rpe）
+m 求每米考虑旋转角的rpe
+–d/–delta表示相对位姿之间的增量
+–u/–delta_unit表示增量的单位可选参数为[f, d, r, m],分别表示[frames, deg, rad, meters] 100表示每100m
+evo_rpe kitti groundtruth.txt CameraTrajectory.txt -r angle_deg --delta 100 --delta_unit m -va --plot --plot_mode xyz
+ 
+evo_rpe kitti groundtruth.txt CameraTrajectory.txt -r full --delta 1 --delta_unit f -va --plot --plot_mode xyz
+
+
+
+
+
+
+
+
